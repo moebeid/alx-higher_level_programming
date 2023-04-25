@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pyfile="${PYFILE}"
+pydir="$(dirname ${pyfile})"
+pybase="$(basename ${pyfile})"
+pyfilec="${pybase}c"
+
+python3 -m compileall "${pyfile}"
+cp "${pydir}/__pycache__/${pybase}.cpython-*.pyc" "${pydir}/${pyfilec}"
+rm -rf "${pydir}/__pycache__"
